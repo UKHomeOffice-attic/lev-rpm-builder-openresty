@@ -54,4 +54,4 @@ cd ..) || exit 1
     --config-files usr/local/openresty/nginx/conf/example.crt \
     --config-files usr/local/openresty/nginx/conf/nginx.conf) || exit 1
 
-cp *.rpm /rpmbuild || exit 1
+cp *.rpm "${RPM_OUTPUT_DIR:-/rpmbuild}" || exit 1
