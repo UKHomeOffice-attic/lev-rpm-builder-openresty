@@ -14,7 +14,7 @@ mkdir -p "${SHARED_TEMP_CONTAINER}"
 
 
 if [ ${SUDO:-1} -eq "1" ]; then
-    sudo docker rm $CONTAINER_NAME ;
+    sudo docker rm $CONTAINER_NAME ; \
     sudo docker build -t $TAG . && \
     sudo docker run \
         --name=$CONTAINER_NAME \
@@ -23,7 +23,7 @@ if [ ${SUDO:-1} -eq "1" ]; then
         $TAG && \
     sudo docker rm $CONTAINER_NAME
 else
-    docker rm $CONTAINER_NAME ;
+    docker rm $CONTAINER_NAME ; \
     docker build -t $TAG . && \
     docker run \
         --name=$CONTAINER_NAME \
