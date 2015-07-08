@@ -12,9 +12,10 @@ SHARED_TEMP_CONTAINER=${SHARED_JENKINS_PATH_CONTAINER:-$(pwd)}/$TEMP_EXTENSION
 
 mkdir -p "${SHARED_TEMP_CONTAINER}"
 
-
 if [ ${SUDO:-1} -eq "1" ]; then
-    sudo docker rm $CONTAINER_NAME ; \
+    set +e
+    sudo docker rm $CONTAINER_NAME
+    set -e
     sudo docker build -t $TAG . && \
     sudo docker run \
         --name=$CONTAINER_NAME \
@@ -23,7 +24,9 @@ if [ ${SUDO:-1} -eq "1" ]; then
         $TAG && \
     sudo docker rm $CONTAINER_NAME
 else
-    docker rm $CONTAINER_NAME ; \
+    set +e
+    docker rm $CONTAINER_NAME
+    set -e
     docker build -t $TAG . && \
     docker run \
         --name=$CONTAINER_NAME \
