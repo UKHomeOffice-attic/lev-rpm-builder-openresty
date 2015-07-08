@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -e
+
 NAME="rpm-builder-waf"
 TAG="${NAME}:${BUILD_NUMBER:-1}"
 CONTAINER_NAME="${NAME}-build-${BUILD_NUMBER:-1}"
