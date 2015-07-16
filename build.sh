@@ -17,7 +17,7 @@ if [ ${SUDO:-1} -eq "1" ]; then
     set +e
     sudo docker rm $CONTAINER_NAME
     set -e
-    sudo docker build -t $TAG . && \
+    sudo docker build -t $TAG $BUILD_HOME && \
     sudo docker run \
         --name=$CONTAINER_NAME \
         -e "RPM_OUTPUT_DIR=/rpms" \
@@ -28,7 +28,7 @@ else
     set +e
     docker rm $CONTAINER_NAME
     set -e
-    docker build -t $TAG . && \
+    docker build -t $TAG $BUILD_HOME && \
     docker run \
         --name=$CONTAINER_NAME \
         -e "RPM_OUTPUT_DIR=/rpms" \
@@ -37,5 +37,5 @@ else
     docker rm $CONTAINER_NAME
 fi
 
-cp $SHARED_TEMP_HOST/* $BUILD_HOME
-rm -rf $SHARED_TEMP_HOST
+cp $SHARED_TEMP_CONTAINER/* $BUILD_HOME
+rm -rf $SHARED_TEMP_CONTAINER
