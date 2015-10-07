@@ -1,5 +1,7 @@
 # Docker Centos 6 OpenResty with Naxsi RPM Builder
 
+[![Build Status](https://travis-ci.org/UKHomeOffice/lev-rpm-builder-openresty.svg?branch=master)](https://travis-ci.org/UKHomeOffice/lev-rpm-builder-openresty)
+
 This project contains a Dockerfile for a container that will build an OpenResty RPM package with Naxsi and Lua included, statically linked to CentOS 6 packages.
 
 ## Getting Started
